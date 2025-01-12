@@ -21,7 +21,8 @@ def dashboard():
             video_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(video_path)
             video_url = url_for('static', filename=f'videos/{file.filename}')
-            return render_template('output.html',video_url=video_url,video_url2=video_url)
+            image_url = url_for('static', filename=f'CSS/images/TENNIS.jpg')
+            return render_template('output.html',video_url=video_url,image=image_url)
         except Exception as e:
             return f"An error occurred: {e}", 500
 
