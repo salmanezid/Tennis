@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title%}
+<div class="container">
+        <h1>Tennis Video Detection</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" id="file" name="file" class="file-input" accept="video/*">
+        <video id="videoPreview2" controls hidden></video>
+        <button type="submit">Upload</button>
+            </form>
+    </div>
+{% endblock %}

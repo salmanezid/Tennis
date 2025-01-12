@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Detection Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+
+        }
+
+         h1 {
+            font-size: 3rem;
+            color: #fff;
+            background: linear-gradient(90deg, #ffffff, #e0e0e0); /* Blue gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: glow 1.5s infinite;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .file-input label {
+  display: block;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease-out;
+}
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{{ url_for('static', filename='CSS/images/TENNIS.jpg') }}");
+
+            background-size: cover;
+            background-position: center;
+            //filter: blur(8px);
+            z-index: -1;
+            background-repeat: repeat;
+
+        }
+
+        video {
+            margin-top: 20px;
+            max-width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+      .content-container {
+            z-index: 1;
+            display: flex;
+            gap: 20px; /* Space between divs */
+        }
+    </style>
+</head>
+<body>
+<div class="background"></div>
+
+    {% block title%}{% endblock %}
+
+
+    <script>
+        document.getElementById('videoInput').addEventListener('change', function(event) {
+            const videoFile = event.target.files[0];
+
+            if (videoFile) {
+                const videoPreview = document.getElementById('videoPreview');
+                const videoURL = URL.createObjectURL(videoFile);
+
+                videoPreview.src = videoURL;
+                videoPreview.hidden = false;
+                videoPreview.load();
+            }
+        });
+    </script>
+</body>
+</html>
